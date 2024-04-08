@@ -1,7 +1,6 @@
 const fs = require("fs");
 const data = require("./data.json");
 
-
 data.map((item) => {
   fs.appendFile(
     "./data.txt",
