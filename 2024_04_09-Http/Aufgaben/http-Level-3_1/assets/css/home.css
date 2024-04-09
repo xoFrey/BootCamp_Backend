@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home {
+  background: linear-gradient(#fbe4a8, #f3c552);
+  height: 100vh;
+  padding-top: 5vw;
+}
+
+.wrapper {
+  background: url(/bg-home.png) no-repeat right top;
+  background-size: 50% 95%;
+
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+  margin-inline: 10vw;
+  border-radius: 20px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.25);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
