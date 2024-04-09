@@ -15,6 +15,17 @@ const chainMul = (num) => {
     .then((result) => multiplyNumber(result));
 };
 
-chainMul(3)
-  .then((result) => console.log(result))
-  .catch((err) => console.log(err));
+// chainMul(3)
+//   .then((result) => console.log(result))
+//   .catch((err) => console.log(err));
+
+const test = (num) => {
+  const result = num + 1;
+  return result;
+};
+
+const reazy = test(3);
+console.log(reazy);
+
+const Hello = reazy + 4;
+console.log();
