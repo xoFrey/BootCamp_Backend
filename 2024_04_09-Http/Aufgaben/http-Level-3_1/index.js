@@ -149,6 +149,17 @@ const server = http.createServer((request, response) => {
             response.end("Internal Server Error");
           });
         break;
+      case "/Nunito.ttf":
+        readFile("./assets/fonts/Nunito-Regular.ttf")
+          .then((data) => {
+            response.write(data);
+            response.end();
+          })
+          .catch((err) => {
+            console.log(err);
+            response.end("Internal Server Error");
+          });
+        break;
       default:
         readFile("./assets/pages/error.html")
           .then((data) => {
