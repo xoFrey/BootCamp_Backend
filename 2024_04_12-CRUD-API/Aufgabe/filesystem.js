@@ -18,7 +18,17 @@ const readToDoList = () => {
   return readFile(__dirname + "/data/toDoList.json");
 };
 
-const writeFileTodo = (path, jsObj) => {
+// const writeFileTodo = (path, jsObj) => {
+//   return new Promise((res, rej) => {
+//     const jsonString = JSON.stringify(jsObj, null, 2);
+//     fs.writeFile(path, jsonString, (err) => {
+//       if (err) return rej(err);
+//       res(jsObj);
+//     });
+//   });
+// };
+
+const writeJsonFile = (path, jsObj) => {
   return new Promise((res, rej) => {
     const jsonString = JSON.stringify(jsObj, null, 2);
     fs.writeFile(path, jsonString, (err) => {
@@ -28,7 +38,11 @@ const writeFileTodo = (path, jsObj) => {
   });
 };
 
-const writeTodo = (array) => {
-  return writeFileTodo(__dirname + "/data/toDoList.json", array);
+const writeTodo = (todoArray) => {
+  return writeJsonFile(__dirname + "/data/toDoList.json", todoArray);
 };
+
+// const writeTodo = (array) => {
+//   return writeFileTodo(__dirname + "/data/toDoList.json", array);
+// };
 export { readToDoList, writeTodo };

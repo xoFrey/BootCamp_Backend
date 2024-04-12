@@ -31,13 +31,38 @@ app.post("/api/v1/todo", (req, res) => {
     .then((newData) => writeTodo(newData))
     .then((newData) => res.status(200).json(newData))
     .catch((err) =>
-      res.status(500).json({ err, message: "Could not create new ToDo!" })
+      res.status(500).json({ err: err, message: "Could not create new ToDo!" })
     );
 });
 
 // app.patch("")
 
+app.patch("/api/v1/todo/:id", (req, res) => {
+  const todoID = req.params.id;
+  const updateTodo = req.body;
+
+  readToDoList()
+    .then((data) =>
+      data.map((item) => {
+        if (item.id.toString() === todoID) {
+          return {
+            ...item,
+            ...updateTodo,
+          };
+        } else {
+          return item;
+        }
+      })
+    )
+    .then((data) => writeTodo(data))
+    .then((data) => res.json(data))
+    .catch((err) => {
+      res.status(500).json({ err: err, message: "Could not create new ToDo!" });
+      console.log(err);
+    });
+});
+
 // app.delete("")
 
-const PORT = 3003;
+const PORT = 2002;
 app.listen(PORT, () => console.log("Server ready at ", PORT));
