@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "timestamp": 1712908918647,
+    "type": "income",
+    "description": "Gehalt wuiiii",
+    "amount": 2234.93
+  },
+  {
+    "id": 2,
+    "timestamp": 1712909918647,
+    "type": "expense",
+    "description": "Scooter für Beate",
+    "amount": 499.99
+  },
+  {
+    "id": 3,
+    "timestamp": 1712909918647,
+    "type": "expense",
+    "description": "Einkauf",
+    "amount": 102.49
+  },
+  {
+    "id": 4,
+    "timestamp": 1712900018647,
+    "type": "expense",
+    "description": "Buch",
+    "amount": 25
+  },
+  {
+    "id": 1712915208522,
+    "timestamp": 1712915208522,
+    "type": "income",
+    "description": "Immobilie vermittelt",
+    "amount": 1500
+  },
+  {
+    "id": 1712916217246,
+    "timestamp": 1712916217246,
+    "type": "income",
+    "description": "Immobilie vermittelt",
+    "amount": 1500
+  }
+]
