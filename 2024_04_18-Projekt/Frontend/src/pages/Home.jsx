@@ -27,7 +27,8 @@ const Home = () => {
             .then((res) => res.json())
             .then((data) => {
                 const newEntry = {
-                    name: firstName,
+                    firstName: firstName,
+                    lastName: lastName,
                     email: email,
                     entry: entry,
                     fileName: data.fileName
@@ -43,13 +44,14 @@ const Home = () => {
                     })
             )
             .then((res) => res.json())
-            .then((data) => setAllEntries(data))
+            .then((data) => { setAllEntries(data); setFirstName(""); setLastName(""), setEmail(""), setFile([]), setEntry(""); })
             .catch((err) => console.log(err));
     };
 
 
-    return <section >
-        <form className=" flex flex-col w-1/3">
+    return <section className="flex flex-col items-center justify-center"  >
+        <h1>Guestbook</h1>
+        <form className=" flex flex-col w-1/4 ">
             <input className="border" type="text" placeholder="Vorname" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
             <input className="border" type="text" placeholder="Nachname" onChange={(e) => setLastName(e.target.value)} value={lastName} />
             <input className="border" type="email" placeholder="E-Mail" onChange={(e) => setEmail(e.target.value)} value={email} />
@@ -58,12 +60,14 @@ const Home = () => {
             <button className="border" onClick={addNewEntry}>Send</button>
         </form>
 
-        <section>
+        <section className="w-1/4">
             {allEntries.map((item, index) => (
                 <div key={index}>
-                    <div className="flex">
-                        <p>{item.name}</p>
-                        <a href="/" className="underline">{item.email}</a>
+                    <div className="flex gap-1">
+                        <p>{item.firstName}</p>
+                        <p>{item.lastName}</p>
+                        <a href="/" className="underline text-blue-500">{item.email} </a>
+                        <p>schreibt:</p>
                     </div>
                     <p>{item.entry}</p>
                     <img src={"http://localhost:1000/" + item.fileName} alt="" />
