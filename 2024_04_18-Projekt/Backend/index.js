@@ -2,6 +2,7 @@ import express from "express";
 import { readFile, writeFile } from "./filesystem.js";
 import cors from "cors";
 import multer from "multer";
+import { body, param, validationResult } from "express-validator";
 
 const app = express();
 
@@ -33,24 +34,33 @@ app.get("/api/v1/guestbook", (req, res) => {
     });
 });
 
-app.post("/api/v1/guestbook", (req, res) => {
-  const newEntry = {
-    id: Date.now(),
-    name: req.body.name,
-    email: req.body.email,
-    entry: req.body.entry,
-    fileName: req.body.fileName,
-  };
+app.post(
+  "/api/v1/guestbook",
+  body("firstName").isString().notEmpty(),
+  body("lastName").isString().notEmpty(),
+  body("email").isEmail(),
+  body("entry").isString().notEmpty(),
 
-  readFile()
-    .then((entries) => [newEntry, ...entries])
-    .then((entries) => writeFile(entries))
-    .then((entries) => res.json(entries))
-    .catch((err) => {
-      res.status(500).json({ message: "Internal Server Error" });
-      console.log(err);
-    });
-});
+  (req, res) => {
+    const newEntry = {
+      id: Date.now(),
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      entry: req.body.entry,
+      fileName: req.body.fileName,
+    };
+
+    readFile()
+      .then((entries) => [newEntry, ...entries])
+      .then((entries) => writeFile(entries))
+      .then((entries) => res.json(entries))
+      .catch((err) => {
+        res.status(500).json({ message: "Internal Server Error" });
+        console.log(err);
+      });
+  },
+);
 
 const PORT = 1000;
 app.listen(PORT, () => console.log("Server ready at", PORT));
