@@ -11,7 +11,13 @@ const Home = () => {
     useEffect(() => {
         fetch(`http://localhost:1000/api/v1/guestbook`, { method: "GET" })
             .then((res) => res.json())
-            .then((data) => setAllEntries(data))
+            .then((data) => {
+                if (typeof data === "object") {
+                    return console.log("Error");
+                } else {
+                    setAllEntries(data);
+                }
+            })
             .catch((err) => console.log(err));
     }, []);
 
