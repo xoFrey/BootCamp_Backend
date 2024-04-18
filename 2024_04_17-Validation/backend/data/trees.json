@@ -1,0 +1,88 @@
+[
+  {
+    "id": 1,
+    "contact": {
+      "name": "Dr. Baum",
+      "email": "Baum@forrest.com",
+      "phone": "0133287548"
+    },
+    "age": 23,
+    "geo": {
+      "lon": 394.92927834,
+      "lat": -34.38945785
+    },
+    "area": "North of Big Forrest",
+    "type": "pinetree",
+    "radius": 34,
+    "height": 600,
+    "imgURL": "pine.avif"
+  },
+  {
+    "id": 1713345072994,
+    "contact": {
+      "name": "Frau Baum",
+      "email": "Baumina@forrest.com"
+    },
+    "age": 43,
+    "geo": {
+      "lon": 394.9233927834,
+      "lat": -34.38945744485
+    },
+    "area": "South of Big Forrest",
+    "type": "achorn",
+    "radius": 323,
+    "height": 63,
+    "imgURL": "pine.avif"
+  },
+  {
+    "id": 1713347308985,
+    "contact": {
+      "name": "Frau Baum",
+      "email": "Baumina@forrest.com"
+    },
+    "age": 43,
+    "geo": {
+      "lon": 40.753,
+      "lat": -73.983
+    },
+    "area": "South of Big Forrest",
+    "type": "nadelbaum",
+    "radius": 323,
+    "height": 63,
+    "imgURL": "pine.avif"
+  },
+  {
+    "id": 1713347330742,
+    "contact": {
+      "name": "Frau Baum",
+      "email": "Baumina@forrest.com"
+    },
+    "age": 43,
+    "geo": {
+      "lon": 40.753,
+      "lat": -73.983
+    },
+    "area": "South of Big Forrest",
+    "type": "laubbaum",
+    "radius": 323,
+    "height": 63,
+    "imgURL": "pine.avif"
+  },
+  {
+    "id": 1713347556549,
+    "contact": {
+      "name": "Frau Baum",
+      "email": "Baumina@forrest.com"
+    },
+    "age": 43,
+    "geo": {
+      "lon": 40.753,
+      "lat": -73.983
+    },
+    "area": "South of Big Forrest",
+    "type": "standardbaum",
+    "radius": 323,
+    "height": 63,
+    "imgURL": "pine.avif"
+  }
+]
