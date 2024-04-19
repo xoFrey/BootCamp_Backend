@@ -17,31 +17,37 @@ app.get("/movies", (req, res) => {
   const genre = req.query.genre?.toLowerCase();
   const minRate = Number(req.query.minRate) || 0;
 
-  const filterIf = (value, array, filter) =>
-    value ? array.filter(filter) : filter;
-
   MoviesAPI(process.env.API_KEY)
     .then((movies) =>
-      filterIf(titleSearch, movies, (movie) =>
-        movie.title.toLowerCase().includes(titleSearch),
-      ),
+      titleSearch
+        ? movies.filter((movie) =>
+            movie.title.toLowerCase().includes(titleSearch),
+          )
+        : movies,
     )
     .then((movies) =>
-      filterIf(year, movies, (movie) => Number(movie.year) === year),
+      director
+        ? movies.filter((movie) =>
+            movie.director.toLowerCase().includes(director),
+          )
+        : movies,
     )
     .then((movies) =>
-      filterIf(director, movies, (movie) =>
-        movie.director.toLowerCase().includes(director),
-      ),
+      year ? movies.filter((movie) => Number(movie.year) === year) : movies,
     )
     .then((movies) =>
-      filterIf(genre, movies, (movie) =>
-        movie.genre.map((genre) => genre.toLowerCase().includes(genre)),
-      ),
+      genre
+        ? movies.filter((movie) =>
+            movie.genre.map((genre) => genre.toLowerCase().includes(genre)),
+          )
+        : movies,
     )
     .then((movies) =>
-      filterIf(minRate, movies, (movie) => Number(movie.minRate) >= minRate),
+      minRate
+        ? movies.filter((movie) => Number(movie.minRate) >= minRate)
+        : movies,
     )
+
     .then((filtered) => res.json(filtered))
     .catch((err) => console.log(err));
 });
