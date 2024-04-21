@@ -11,7 +11,7 @@ const Home = () => {
             .then((res) => res.json())
             .then((data) => setTodoList(data)).catch((err) => console.log(err));
     }, []);
-
+    console.log(todoList);
 
     return <section>
         <h1>Home</h1>

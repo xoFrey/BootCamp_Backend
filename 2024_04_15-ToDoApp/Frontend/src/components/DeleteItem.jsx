@@ -1,7 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FullToDoList } from "./Context";
 
 const DeleteItem = ({ todo }) => {
+
+
     const { setTodoList } = useContext(FullToDoList);
     const deleteItem = () => {
         fetch(`http://localhost:2003/api/v1/todos/${todo.id}`, {
@@ -12,9 +14,7 @@ const DeleteItem = ({ todo }) => {
             .catch((err) => console.log(err));
     };
 
-    const updateItem = ()=> {
-        
-    }
+
 
     return <>
         <button onClick={() => deleteItem()}>Delete</button>
