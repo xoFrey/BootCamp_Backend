@@ -1,17 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { FavoritedMovies } from "../context/Context";
+import { FavoritedMovies, IsInFavorites } from "../context/Context";
+import { backendURL } from "../api/api";
 
 const MovieCard = ({ movies, favorite }) => {
     const [isFav, setIsFav] = useState(favorite || false);
     const { allFavorites, setAllFavorites } = useContext(FavoritedMovies);
 
-    const addToFav = () => {
 
+
+
+    const addToFav = () => {
         const newMovieID = {
             movieID: movies._id
         };
-
         fetch(`http://localhost:1001/api/v1/movies/${movies._id}/favorites`,
             {
                 method: "POST",
@@ -31,6 +33,8 @@ const MovieCard = ({ movies, favorite }) => {
             .catch((err) => console.log(err));
     };
 
+
+
     return <section className="w-40 h-60 p-4">
         <Link to={`/movies/${movies._id}`}>
             <div >
@@ -40,7 +44,7 @@ const MovieCard = ({ movies, favorite }) => {
 
             </div>
         </Link>
-        {isFav ? <button onClick={() => { deleteFav(); }}>Remove to Fav!</button>
+        {isFav ? <button onClick={() => { deleteFav(); }}>Remove from Fav!</button>
             : <button onClick={() => { addToFav(); }}>Put to Fav!</button>}
 
     </section>;

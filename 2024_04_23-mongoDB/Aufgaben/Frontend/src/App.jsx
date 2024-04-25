@@ -14,10 +14,11 @@ function App() {
 
 
   return <>
+
     <FavoritedMovies.Provider value={{ allFavorites, setAllFavorites }}>
       <AllMovies.Provider value={{ allMovies, setAllMovies }}>
+        <FetchPage />
         <BrowserRouter>
-          <FetchPage />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -28,6 +29,7 @@ function App() {
         </BrowserRouter>
       </AllMovies.Provider>
     </FavoritedMovies.Provider>
+
   </>;
 }
 

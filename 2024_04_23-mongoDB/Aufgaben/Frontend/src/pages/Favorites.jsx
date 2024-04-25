@@ -14,14 +14,13 @@ const Favorites = () => {
             .catch((err) => console.log(err));
     }, []);
 
-
     return <>
         <section className="bg-home bg-no-repeat bg-cover bg-center text-white h-screen w-100 ">
             <div className="flex flex-col items-center pt-40">
                 <h2 className="text-3xl">Your Favorites</h2>
             </div>
         </section>
-        <article className="flex flex-wrap justify-center bg-black text-white gap-4">
+        <article className="flex flex-wrap justify-center bg-black  gap-4">
             {allFavorites.slice(0, limit).map((item) => (
                 <div key={item._id} className="flex flex-col">
                     <MovieCard movies={item} favorite={true} />
