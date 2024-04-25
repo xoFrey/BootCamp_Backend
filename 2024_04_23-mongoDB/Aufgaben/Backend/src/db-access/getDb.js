@@ -12,7 +12,7 @@ let dbRef = null;
 export const getDb = () => {
   return new Promise((resolve, reject) => {
     if (dbRef) {
-      return resolve(db);
+      return resolve(dbRef);
     }
     client
       .connect()

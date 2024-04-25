@@ -3,12 +3,13 @@ import morgan from "morgan";
 import { MovieDAO } from "./db-access/moviesDAO.js";
 import { FavoriteDAO } from "./db-access/favoritesDAO.js";
 import { ObjectId } from "mongodb";
+import cors from "cors";
 
 const app = express();
 
 app.use(morgan("dev"));
 app.use(express.json());
-
+app.use(cors());
 // !-------------------------MOVIES---------------------------------
 
 app.get("/api/v1/movies", (req, res) => {
@@ -77,7 +78,6 @@ app.post("/api/v1/movies/:movieID/favorites", (req, res) => {
   const movieID = req.params.movieID;
   const isFav = {
     movieID: ObjectId.createFromHexString(movieID),
-    test: req.body.test,
   };
   FavoriteDAO.insertOne(isFav)
     .then((isFav) => res.json(isFav || {}))
@@ -101,8 +101,8 @@ app.patch("/api/v1/movies/:movieID/favorites", (req, res) => {
     });
 });
 
-app.delete("/api/v1/favorites/:favId", (req, res) => {
-  FavoriteDAO.deleteOne(req.params.favId)
+app.delete("/api/v1/favorites/:movieID", (req, res) => {
+  FavoriteDAO.deleteByMovieID(req.params.movieID)
     .then((deleted) => res.json(deleted || {}))
     .catch((err) => {
       console.log(err);

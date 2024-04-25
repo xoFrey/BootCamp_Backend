@@ -3,10 +3,12 @@ import morgan from "morgan";
 import { RecipeDAO } from "./access/recipeDAO.js";
 import { RatingDAO } from "./access/ratingDAO.js";
 import { ObjectId } from "mongodb";
+import cors from "cors";
 
 const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
 
 // ! GET Functions
 // * Recipe

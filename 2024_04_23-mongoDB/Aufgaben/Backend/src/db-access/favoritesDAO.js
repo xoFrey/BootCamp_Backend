@@ -20,10 +20,10 @@ const insertOne = (newFav) => {
     );
 };
 
-const deleteOne = (id) => {
+const deleteByMovieID = (id) => {
   const idAsObjectId = ObjectId.createFromHexString(id);
   return getDb().then((db) =>
-    db.collection("favorites").findOneAndDelete({ _id: idAsObjectId }),
+    db.collection("favorites").findOneAndDelete({ movieID: idAsObjectId }),
   );
 };
 
@@ -52,7 +52,7 @@ const findByMovie = (movieID) => {
 export const FavoriteDAO = {
   findAll,
   insertOne,
-  deleteOne,
+  deleteByMovieID,
   findById,
   updateOne,
   findByMovie,
