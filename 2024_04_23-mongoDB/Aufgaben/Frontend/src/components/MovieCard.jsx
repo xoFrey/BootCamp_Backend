@@ -2,13 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FavoritedMovies, IsInFavorites } from "../context/Context";
 import { backendURL } from "../api/api";
+import FullStar from "./svg/FullStar";
+import EmptyStar from "./svg/EmptyStar";
 
 const MovieCard = ({ movies, favorite }) => {
-    const [isFav, setIsFav] = useState(favorite || false);
+    const [isFav, setIsFav] = useState(favorite);
     const { allFavorites, setAllFavorites } = useContext(FavoritedMovies);
-
-
-
 
     const addToFav = () => {
         const newMovieID = {
@@ -34,19 +33,20 @@ const MovieCard = ({ movies, favorite }) => {
     };
 
 
-
-    return <section className="w-40 h-60 p-4">
+    return <section className="">
         <Link to={`/movies/${movies._id}`}>
             <div >
-                <img src="/img/movieExample.jpg" alt="" />
-                <h3>{movies.title}</h3>
-                <p>{movies.director}</p>
-
+                <img className="pb-4" src="/img/movieExample.jpg" alt="" />
             </div>
         </Link>
-        {isFav ? <button onClick={() => { deleteFav(); }}>Remove from Fav!</button>
-            : <button onClick={() => { addToFav(); }}>Put to Fav!</button>}
-
+        <div className="flex items-start gap-5">
+            <div>
+                <h3 className="text-xl text-white font-light mb-1">{movies.title}</h3>
+                <p className="text-mainText text-xl font-light">{movies.director}</p>
+            </div>
+            {isFav ? <FullStar deleteFav={deleteFav} />
+                : <EmptyStar addToFav={addToFav} />}
+        </div>
     </section>;
 };
 

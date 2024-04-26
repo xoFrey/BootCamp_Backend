@@ -1,40 +1,45 @@
 import { useContext, useEffect, useState } from "react";
 import { AllMovies, FavoritedMovies, IsInFavorites } from "../context/Context";
+import MovieCardHome from "../components/MovieCardHome";
 import MovieCard from "../components/MovieCard";
 import FetchPage from "./FetchPage";
 
 const Home = () => {
     const { allMovies, setAllMovies } = useContext(AllMovies);
     const { allFavorites } = useContext(FavoritedMovies);
+    const { isInFav, setIsInFav } = useContext(IsInFavorites);
     const [limit, setLimit] = useState(50);
     const [favIds, setFavIds] = useState([]);
 
-    useEffect(() => {
-        setFavIds(allFavorites.map((movie) => movie._id)); // [id, id, id]
-    }, []);
 
+    useEffect(() => {
+        setIsInFav(allFavorites.map((movie) => movie._id)); // [id, id, id]
+    }, []);
 
     return <>
 
-        <section className="bg-home bg-no-repeat bg-cover bg-center text-white h-screen w-100 ">
-            <div className="flex flex-col items-center pt-40">
-                <h2 className=" text-3xl">MovieMagicDatabase has it all.</h2>
-                <h2 className="">But you can still add to it.</h2>
-
+        <section className="bg-home bg-no-repeat bg-cover bg-center text-white h-screen w-100 flex justify-center pt-40 ">
+            <div className="text-5xl text-headline font-black">
+                <h2 className="">MovieMagicDatabase has it all. </h2>
+                <h2 className="">But you can still <span className="italic">add</span> to it.</h2>
             </div>
         </section>
-        <article className="flex flex-wrap justify-center bg-black  gap-4">
+
+        <h2 className="text-5xl font-extrabold text-mainText pt-40 pb-20 bg-subcolor px-12">All Movies</h2>
+        <article className="flex flex-wrap justify-center bg-subcolor gap-24 px-10 ">
             {allMovies.slice(0, limit).map((item) => (
 
-                <div key={item._id} className="flex flex-col">
-                    {console.log(favIds.includes(item._id))}
-                    <MovieCard movies={item} favorite={favIds.includes(item._id)} />
+                <div key={item._id} className="w-1/4">
+                    {/* favorite={isInFav.includes(item._id)} */}
+                    <MovieCard movies={item} favorite={isInFav.includes(item._id)} />
                 </div>
             ))}
 
         </article>
-        <div className="bg-black text-white" >
-            <button onClick={() => setLimit(limit + 50)}>See More</button></div>
+
+        <div className="bg-subcolor pt-20 pb-10 text-center" >
+            <button className=" bg-mainText text-white rounded-full border-2 border-mainText px-8 py-2" onClick={() => setLimit(limit + 50)}>See More</button>
+        </div>
     </>;
 };
 

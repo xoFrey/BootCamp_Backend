@@ -5,6 +5,7 @@ import { AllMovies, FavoritedMovies, IsInFavorites } from "../context/Context.js
 const FetchPage = () => {
     const { allMovies, setAllMovies } = useContext(AllMovies);
     const { allFavorites, setAllFavorites } = useContext(FavoritedMovies);
+    const { isInFav, setIsInFav } = useContext(IsInFavorites);
 
     useEffect(() => {
         fetch(`${backendURL}/api/v1/movies`, { method: "GET" })
@@ -14,6 +15,10 @@ const FetchPage = () => {
     }, []);
 
 
+
+
+
+    console.log(allFavorites);
 
 
     return;

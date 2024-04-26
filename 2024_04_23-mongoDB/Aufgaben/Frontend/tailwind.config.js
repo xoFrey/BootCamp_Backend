@@ -10,10 +10,11 @@ export default {
       headline: "#A16171",
       subcolor: "#264653",
       white: "#ffffff",
+      yellow: "#E9C46A",
     },
     extend: {
       backgroundImage: {
-        home: "url('/img/home.jpg')",
+        home: "url('/img/moviemagic.png')",
       },
     },
   },
