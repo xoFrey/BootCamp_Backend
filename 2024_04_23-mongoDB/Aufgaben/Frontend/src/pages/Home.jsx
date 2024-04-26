@@ -7,14 +7,10 @@ import FetchPage from "./FetchPage";
 const Home = () => {
     const { allMovies, setAllMovies } = useContext(AllMovies);
     const { allFavorites } = useContext(FavoritedMovies);
-    const { isInFav, setIsInFav } = useContext(IsInFavorites);
+
     const [limit, setLimit] = useState(50);
-    const [favIds, setFavIds] = useState([]);
 
-
-    useEffect(() => {
-        setIsInFav(allFavorites.map((movie) => movie._id)); // [id, id, id]
-    }, []);
+    const isInFav = allFavorites.map((movie) => movie._id);
 
     return <>
 
@@ -30,7 +26,7 @@ const Home = () => {
             {allMovies.slice(0, limit).map((item) => (
 
                 <div key={item._id} className="w-1/4">
-                    {/* favorite={isInFav.includes(item._id)} */}
+
                     <MovieCard movies={item} favorite={isInFav.includes(item._id)} />
                 </div>
             ))}

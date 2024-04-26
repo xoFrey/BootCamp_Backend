@@ -14,8 +14,12 @@ const FetchPage = () => {
             .catch((err) => console.log(err));
     }, []);
 
-
-
+    useEffect(() => {
+        fetch(`${backendURL}/api/v1/favorites`, { method: "GET" })
+            .then((res) => res.json())
+            .then((data) => setAllFavorites(data))
+            .catch((err) => console.log(err));
+    }, []);
 
 
     console.log(allFavorites);

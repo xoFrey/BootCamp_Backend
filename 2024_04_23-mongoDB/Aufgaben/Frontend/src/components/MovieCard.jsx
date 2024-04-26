@@ -6,7 +6,7 @@ import FullStar from "./svg/FullStar";
 import EmptyStar from "./svg/EmptyStar";
 
 const MovieCard = ({ movies, favorite }) => {
-    const [isFav, setIsFav] = useState(favorite);
+    const [isFav, setIsFav] = useState(favorite || false);
     const { allFavorites, setAllFavorites } = useContext(FavoritedMovies);
 
     const addToFav = () => {

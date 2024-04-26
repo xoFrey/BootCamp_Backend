@@ -8,8 +8,6 @@ const Favorites = () => {
     const { allFavorites, setAllFavorites } = useContext(FavoritedMovies);
     const [limit, setLimit] = useState(50);
 
-
-
     useEffect(() => {
         fetch(`${backendURL}/api/v1/favorites`, { method: "GET" })
             .then((res) => res.json())
