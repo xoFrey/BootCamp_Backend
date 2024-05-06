@@ -14,8 +14,10 @@
   "scripts": {
     "dev": "nodemon src/index.js"
   },
+
   "keywords": [],
   "author": "Izel Acar",
   "license": "ISC",
-  "description": "Quiz App"
+  "description": "Quiz App",
+  "type": "module"
 }

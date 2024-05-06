@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema(
     lastName: { type: String, required: true },
     email: { type: String, required: true },
   },
-  { collation: "users" },
+  { collection: "users" },
 );
 
 export const User = mongoose.model("User", UserSchema);

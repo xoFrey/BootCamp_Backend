@@ -11,7 +11,7 @@ const QuestionSchema = new mongoose.Schema(
     answerId: { type: mongoose.Types.ObjectId, ref: "Answer" },
     userId: { type: mongoose.Types.ObjectId, ref: "User" },
   },
-  { collation: "questions" },
+  { collection: "questions" },
 );
 
 export const Question = mongoose.model("Question", QuestionSchema);
