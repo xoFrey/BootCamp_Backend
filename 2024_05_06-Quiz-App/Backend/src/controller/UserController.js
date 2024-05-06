@@ -1,4 +1,3 @@
-import { User } from "../models/User.js";
 import { UserService } from "../service/index.js";
 
 const getAllUsersCtrl = async (req, res) => {
