@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const QuizSchema = new mongoose.Schema(
   {
-    questionId: { type: mongoose.Types.ObjectId, ref: "Question" },
-    userId: { type: mongoose.Types.ObjectId, ref: "User" },
+    questionIds: [{ type: mongoose.Types.ObjectId, ref: "Question" }],
+    name: { type: String },
   },
   { collection: "quizzes" },
 );
