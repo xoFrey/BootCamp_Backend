@@ -1,11 +1,7 @@
 import { Recipe } from "../models/Recipe.js";
 
-export const addRecipe = (recipeInfo) => {
-  return Recipe.findOne({ name: recipeInfo.name }).then((foundReicpe) => {
-    if (foundReicpe) {
-      throw new Error("Recipe with this name already exists");
-    } else {
-      return Recipe.create(recipeInfo);
-    }
-  });
+export const addRecipe = async (recipeInfo) => {
+  const foundOne = await Recipe.findOne({ name: recipeInfo.name });
+  if (foundOne) throw new Error("Recipe with this name already exists");
+  return Recipe.create(recipeInfo);
 };

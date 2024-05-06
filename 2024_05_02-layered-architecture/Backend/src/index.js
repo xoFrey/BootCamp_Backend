@@ -15,12 +15,11 @@ app.use(cors());
 app.use("/api/v1/recipes", recipeRouter);
 app.use("/api/v1/rating", ratingRouter);
 
-const PORT = 1000;
-connectToDB()
-  .then(() => {
-    app.listen(PORT, () => console.log("Server ready at", PORT));
-  })
-  .catch((err) => {
-    console.log(err);
-    process.exit();
-  });
+try {
+  await connectToDB();
+  const PORT = 1000;
+  app.listen(PORT, () => console.log("Server ready at", PORT));
+} catch (err) {
+  console.log(err);
+  process.exit();
+}

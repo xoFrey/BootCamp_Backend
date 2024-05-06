@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.0.1",
+    "mongoose": "^8.3.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.0"
+  },
+  "name": "2024_05_06-quiz-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Izel Acar",
+  "license": "ISC",
+  "description": "Quiz App"
+}

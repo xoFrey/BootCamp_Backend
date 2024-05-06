@@ -1,9 +1,8 @@
 import { Rating } from "../models/Rating.js";
 import { Recipe } from "../models/Recipe.js";
 
-export const addRating = (recipeId, ratingInfo) => {
-  return Recipe.findById(recipeId).then((foundRecipe) => {
-    if (!foundRecipe) throw new Error("Recipe not found");
-    else return Rating.create({ ...ratingInfo, recipeId });
-  });
+export const addRating = async (recipeId, ratingInfo) => {
+  const foundRecipe = await Recipe.findById(recipeId);
+  if (!foundRecipe) throw new Error("Recipe not found");
+  return Rating.create({ ...ratingInfo, recipeId });
 };

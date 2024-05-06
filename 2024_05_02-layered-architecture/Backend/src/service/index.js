@@ -10,6 +10,7 @@ export const RecipeService = {
   showRecipeDetail,
   addRecipe,
   editRecipe,
+  deleteRecipe,
 };
 export const RatingService = {
   addRating,

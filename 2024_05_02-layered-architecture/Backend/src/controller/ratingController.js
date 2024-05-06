@@ -1,23 +1,25 @@
 import { RatingService } from "../service.js";
 
-const createRatingCtrl = (req, res) => {
-  const newRatingInfo = {
-    text: req.body.text,
-    recipeId: ObjectId.createFromHexString(req.params.recipeId),
-  };
-  RatingService.addRating(recipeId, newRatingInfo)
-    .then((added) => res.json(added || {}))
-    .catch((err) =>
-      res.status(500).json({ err, message: "Could not create rating" }),
+const createRatingCtrl = async (req, res) => {
+  try {
+    const added = await RatingService.addRating(
+      req.body.text,
+      ObjectId.createFromHexString(req.params.recipeId),
     );
+    res.json(added || {});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ err, message: "Could not create rating" });
+  }
 };
 
-const deleteRatingCtrl = (req, res) => {
-  RatingService.deleteRating()
-    .then((deleted) => res.json(deleted || {}))
-    .catch((err) =>
-      res.status(500).json({ err, message: "Could not create rating" }),
-    );
+const deleteRatingCtrl = async (req, res) => {
+  try {
+    const deleted = await RatingService.deleteRating();
+    res.json(deleted || {});
+  } catch {
+    res.status(500).json({ err, message: "Could not create rating" });
+  }
 };
 
 export const RatingController = { createRatingCtrl, deleteRatingCtrl };
