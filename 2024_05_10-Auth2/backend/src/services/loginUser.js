@@ -11,7 +11,7 @@ export async function loginUser({ email, password }) {
   const correctPassword = passwordHash === user.passwordHash;
   if (!correctPassword) throw new Error("Wrong Password");
 
-  const accessToken = createToken(user);
+  const accessToken = createToken(user, "access");
 
   return { user: userToView(user), tokens: { accessToken } };
 }
